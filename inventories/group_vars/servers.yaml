@@ -1,0 +1,3 @@
+ansible_network_os: vcenter
+ansible_user: admin
+ansible_password: GenDyn1234567*(

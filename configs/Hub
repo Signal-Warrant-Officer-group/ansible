@@ -1,0 +1,31 @@
+interface Tunnel91572201
+ description test  gre tunnel
+ bandwidth 6144
+ ip flow monitor FLOW_MONITOR sampler FLOW_SAMPLER input
+ ip flow monitor FLOW_MONITOR sampler FLOW_SAMPLER output
+ ip address 10.200.170.4 255.255.255.240
+ no ip redirects
+ no ip proxy-arp
+ ip mtu 1392
+ ip pim nbma-mode
+ ip pim sparse-mode
+ ipv6 enable
+ ip nhrp authentication 91572201
+ no ip nhrp map multicast dynamic
+ ip nhrp network-id 91572201
+ ip nhrp redirect
+ ip tcp adjust-mss 1352
+ qos pre-classify
+ ospfv3 21 network point-to-multipoint
+ ospfv3 21 cost 12400
+ ospfv3 21 flood-reduction
+ ospfv3 21 mtu-ignore
+ ospfv3 21 ipv4 area 0
+ tunnel source GigabitEthernet 1
+ tunnel mode gre multipoint
+ tunnel key 91572201
+ !
+ int loopback 0
+    ip address 10.196.170.2 255.255.255.0 
+    no shutdown
+    ip ospf 21 area  0

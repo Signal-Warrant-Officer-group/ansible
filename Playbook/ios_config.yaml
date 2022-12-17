@@ -1,0 +1,40 @@
+---
+- name: Configure Cisco IOS device
+  hosts: R1
+  gather_facts: false
+  connection: network_cli
+  vars:
+    intf_name: GigabitEthernet 1
+    intf_description: Connection to core network
+    intf_ip: 10.0.0.1
+    intf_netmask: 255.255.255.0
+    default_route: 10.0.0.2
+  tasks:
+  - name: Configure interface
+    ios_config:
+      lines:
+      - "interface {{ intf_name }}"
+      - "description {{ intf_description }}"
+      - " ip address {{ intf_ip }} {{ intf_netmask }}"
+      - "ip ospf 1  area  0"
+      - " no shut"
+
+- name: Configure Cisco IOS device
+  hosts: R2
+  gather_facts: false
+  connection: network_cli
+  vars:
+    intf_name: GigabitEthernet 1
+    intf_description: Connection to core network
+    intf_ip: 10.0.0.3
+    intf_netmask: 255.255.255.0
+    default_route: 10.0.0.2
+  tasks:
+  - name: Configure interface
+    ios_config:
+      lines:
+      - "interface {{ intf_name }}"
+      - "description {{ intf_description }}"
+      - " ip address {{ intf_ip }} {{ intf_netmask }}"
+      - "ip ospf 1  area  0"
+      - " no shut"

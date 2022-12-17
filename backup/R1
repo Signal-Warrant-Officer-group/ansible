@@ -1,0 +1,140 @@
+Building configuration...
+
+Current configuration : 1964 bytes
+!
+! Last configuration change at 02:28:18 UTC Sat Dec 17 2022 by admin
+!
+version 15.4
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no platform punt-keepalive disable-kernel-core
+platform console virtual
+!
+hostname R1
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+!
+!
+!
+!
+!
+!
+!
+
+
+ip domain name localhost
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+subscriber templating
+multilink bundle-name authenticated
+!
+!
+license udi pid CSR1000V sn 93MAOFLTPB8
+!
+username admin privilege 15 password 0 GenDyn1234
+!
+redundancy
+ mode none
+!
+!
+!
+ip ssh version 2
+!
+!
+!
+!
+interface Loopback0
+ ip address 10.196.170.2 255.255.255.0
+ ip ospf 21 area 0
+!
+interface Tunnel91572201
+ description test  gre tunnel
+ bandwidth 6144
+ ip address 10.200.170.4 255.255.255.240
+ no ip redirects
+ no ip proxy-arp
+ ip mtu 1392
+ ip pim nbma-mode
+ ip pim sparse-mode
+ ip nhrp authentication 91572201
+ ip nhrp network-id 91572201
+ ip nhrp redirect
+ ip tcp adjust-mss 1352
+ ipv6 enable
+ ospfv3 21 network point-to-multipoint
+ ospfv3 21 cost 12400
+ ospfv3 21 flood-reduction
+ ospfv3 21 mtu-ignore
+ qos pre-classify
+ tunnel source GigabitEthernet1
+ tunnel mode gre multipoint
+ tunnel key 91572201
+!
+interface GigabitEthernet1
+ description Main network backbone
+ ip address dhcp
+ ip pim sparse-dense-mode
+ ip ospf 1 area 0
+ negotiation auto
+!
+interface GigabitEthernet2
+ description Connection to core network
+ ip address 10.0.0.1 255.255.255.0
+ ip ospf 1 area 0
+ negotiation auto
+!
+interface GigabitEthernet3
+ no ip address
+ shutdown
+ negotiation auto
+!
+router ospf 1
+!
+router ospf 21
+!
+!
+virtual-service csr_mgmt
+!
+ip forward-protocol nd
+!
+no ip http server
+no ip http secure-server
+!
+!
+!
+!
+control-plane
+!
+!
+line con 0
+ login local
+ transport output ssh
+ stopbits 1
+line aux 0
+ stopbits 1
+line vty 0 4
+ logging synchronous
+ login local
+ transport input ssh
+ transport output ssh
+line vty 5 15
+ logging synchronous
+ login local
+ transport input ssh
+ transport output ssh
+!
+!
+end

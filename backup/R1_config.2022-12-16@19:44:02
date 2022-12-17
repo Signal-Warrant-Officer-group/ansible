@@ -1,0 +1,112 @@
+Building configuration...
+
+Current configuration : 1276 bytes
+!
+! Last configuration change at 15:41:27 UTC Fri Dec 16 2022 by admin
+!
+version 15.4
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no platform punt-keepalive disable-kernel-core
+platform console virtual
+!
+hostname R1
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+!
+!
+!
+!
+!
+!
+!
+
+
+ip domain name localhost
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+subscriber templating
+multilink bundle-name authenticated
+!
+!
+license udi pid CSR1000V sn 93MAOFLTPB8
+!
+username admin privilege 15 password 0 GenDyn1234
+!
+redundancy
+ mode none
+!
+!
+!
+ip ssh version 2
+!
+!
+!
+!
+interface Loopback0
+ no ip address
+!
+interface GigabitEthernet1
+ ip address dhcp
+ ip pim sparse-dense-mode
+ ip ospf 1 area 0
+ negotiation auto
+!
+interface GigabitEthernet2
+ no ip address
+ shutdown
+ negotiation auto
+!
+interface GigabitEthernet3
+ no ip address
+ shutdown
+ negotiation auto
+!
+router ospf 1
+!
+!
+virtual-service csr_mgmt
+!
+ip forward-protocol nd
+!
+no ip http server
+no ip http secure-server
+!
+!
+!
+!
+control-plane
+!
+!
+line con 0
+ login local
+ transport output ssh
+ stopbits 1
+line aux 0
+ stopbits 1
+line vty 0 4
+ logging synchronous
+ login local
+ transport input ssh
+ transport output ssh
+line vty 5 15
+ logging synchronous
+ login local
+ transport input ssh
+ transport output ssh
+!
+!
+end
