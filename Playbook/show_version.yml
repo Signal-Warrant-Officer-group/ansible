@@ -1,8 +1,8 @@
 ---
-- name: Cisco show version example
+- name: Cisco show version 
   hosts: routers
   gather_facts: false
-  
+
   tasks:
     - name: run show version on the routers
       ios_command:

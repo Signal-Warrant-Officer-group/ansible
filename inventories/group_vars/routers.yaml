@@ -3,3 +3,4 @@
 ansible_network_os: ios
 ansible_user: admin
 ansible_password: GenDyn1234
+ansible_connection: network_cli
