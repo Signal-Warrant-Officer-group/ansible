@@ -4,8 +4,8 @@
   connection: network_cli
   gather_facts: no
 
-- name: Replace provided configuration with device configuration
-  cisco.ios.ios_static_routes:
+ - name: Replace provided configuration with device configuration
+   cisco.ios.ios_static_routes:
     config:
     - address_families:
       - afi: ipv4
