@@ -10,9 +10,6 @@
       ios_command:
         commands: 
           - show ip interface brief
-          - show ip route
-          - show ip ospf neig
-          - show ip ospf traffic
       register: output
 
     - name: print output

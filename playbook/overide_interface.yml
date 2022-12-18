@@ -1,0 +1,20 @@
+#this will allow you to make changes to IP address, DHCP, link local and other configurations for L3 configurations.
+---
+- name: override current interface
+  hosts: R2
+  connection: network_cli
+  gather_facts: no 
+ 
+  tasks:
+   - name: Merge provided configuration with device configuration
+     cisco.ios.ios_l3_interfaces:
+         config:
+         - name: GigabitEthernet3
+           ipv4:
+            - address: 192.168.0.2/24
+         - name: GigabitEthernet2
+           ipv4:
+            - address: 192.168.3.2/24
+            
+          
+

@@ -1,0 +1,17 @@
+--- 
+
+- name: ping router 
+  hosts: routers
+  connection: network_cli
+  gather_facts: no
+  
+  tasks:
+  -   name: Test reachability 
+      cisco.ios.ios_ping: 
+        dest: 192.168.3.5
+        count: 5
+        timeout: 5
+      
+        
+
+

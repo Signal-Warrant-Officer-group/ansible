@@ -1,0 +1,13 @@
+---
+
+- name: backup router configurations
+  hosts: routers
+  connection: network_cli
+  gather_facts: no
+
+  tasks:
+
+  - name: Gather OSPFV2 provided configurations
+  cisco.ios.ios_ospfv2:
+    config
+    state: gathered
