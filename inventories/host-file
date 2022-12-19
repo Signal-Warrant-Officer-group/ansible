@@ -2,7 +2,6 @@
 R1 ansible_host=192.168.68.136
 R2 ansible_host=192.168.68.142
 TAP-572220-XT2R ansible_host=192.168.68.145
-test
 
 [servers]
 Exsi1 ansible_host:192.168.68.132
