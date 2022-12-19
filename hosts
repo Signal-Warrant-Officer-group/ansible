@@ -11,6 +11,7 @@
 # Ex 1: Ungrouped hosts, specify before any group headers.
 
 [routers]
+
 R1 192.168.68.136
 R2 192.168.68.142
 TAP-572220-XT2R 192.168.68.145
