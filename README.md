@@ -1,3 +1,11 @@
+19 DEC 2022 Update: 
+
+When creating playbooks for specifc devices (Cisco, Palo Alto, ESXI, ect) place the YAML file in the respective file 
+
+/playbook/cisco_ios/<name>.yaml 
+
+
+
 # 255N-255A-Ansible-Repo
 This is repository as a community group to build playbooks for SNN, WINT, CPCE, ESXI, Palo Alto and other systems we use. 
 Please if you create a playbook lable it as followed. 
