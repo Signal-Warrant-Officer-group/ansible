@@ -21,10 +21,14 @@
   #    debug: 
   #      msg: Current interface on device:{{ ansible_net_hostname }} 
 
-   - name: Current image
-     debug: 
-       msg: The current config for is:{{ ansible_net_image }} 
+  #  - name: Current image
+  #    debug: 
+  #      msg: The current config for is:{{ ansible_net_image }} 
 
-   - name: Current ios
-     debug: 
-       msg: The current config for is:{{ ansible_net_iostype }} 
+  #  - name: Current ios
+  #    debug: 
+  #      msg: The current config for is:{{ ansible_net_iostype }} 
+
+    - name: Current ios
+      debug: 
+        msg: The current config for is:{{ ansible_net_iostype }} 
