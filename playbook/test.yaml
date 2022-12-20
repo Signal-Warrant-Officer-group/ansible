@@ -1,1 +1,34 @@
-test 
+---
+
+- name: Cisco show version
+  hosts: R1
+  gather_facts: false
+  connection: network_cli
+
+  tasks:
+    - name: Run show version and check to see if output contains IOS
+      cisco.ios.ios_command:
+       commands: show version
+       wait_for: result[0] contains IOS
+    
+       
+
+
+
+#    - name: clear ip ospf process
+#    - name: run multiple commands and evaluate the output
+#      cisco.ios.ios_command:
+#       commands:
+#       - show interfaces
+#       wait_for:
+#       - result[0] contains Loopback0
+#       register: output
+# #  #      commands:
+# #  #      - commands: 'clear ip ospf process'
+# #          prompt: 'Reset ALL OSPF processes? [no]'
+# #          answer: 'y'
+# #          tags: clear 
+
+    - name: print output
+      debug:
+        msg: output.stdout
