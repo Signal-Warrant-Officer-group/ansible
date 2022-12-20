@@ -3,28 +3,17 @@
   hosts: routers
   gather_facts: false
 
+
+  vars_files:
+
+
+
   tasks:
-   - name: Gather L3 interfaces resources and minimal legacy facts 
-     cisco.ios.ios_facts:
- 
-        
+   - name: Gather OSPF Interfaces provided configurations
+     cisco.ios.ios_ospf_interfaces:
+      config:
+      state: gathered  
 
-  #  - name: display serial number
-  #    debug: 
-  #      msg: The serial number is:{{ ansible_net_serialnum }} 
-
-  #  - name: display cdp neighbors
-  #    debug: 
-  #      msg: Current neighbors are:{{ ansible_net_neighbors }} 
-
-  #  - name: show device hostname 
-  #    debug: 
-  #      msg: Current interface on device:{{ ansible_net_hostname }} 
-
-   - name: Current image
-     debug: 
-       msg: The current config for is:{{ ansible_net_image }} 
-
-   - name: Current ios
-     debug: 
-       msg: The current config for is:{{ ansible_net_iostype }} 
+   - name: show OSPF  interface configurations 
+     debug:
+       var: commands.stdout 

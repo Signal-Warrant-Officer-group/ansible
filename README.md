@@ -2,7 +2,8 @@
 
 When creating playbooks for specifc devices (Cisco, Palo Alto, ESXI, ect) place the YAML file in the respective file 
 
-/playbook/cisco_ios/<name>.yaml 
+examplezgit p
+**/playbook/cisco_ios/<name>.yaml **
 
 
 
