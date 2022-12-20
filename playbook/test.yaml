@@ -2,18 +2,36 @@
 - name: Cisco show version
   hosts: routers
   gather_facts: false
+  connection: network_cli
 
+  vars: 
+   R1_public_ip: "{{ hostvars['R1']['ansible_host'] }}"
+   R2_public_ip: "{{ hostvars['R2']['ansible_host'] }}"
+ 
+  tasks: 
+  
 
-  vars_files:
+  #crashes R1 router
 
+   - name: GRE tunnel configuration on R2
+     ios_config:
+      lines:
+       - 'description Tunnel for R2 to R1'
+       - 'ip address 10.10.0.5 255.255.255.252'
+       - 'tunnel source gigabitethernet1'
+       - 'tunnel destination {{ R1_public_ip }}'
+      parents: interface tunnel 6
+     when: '"R1" in inventory_hostname'
 
+  #changes hostname to R1
+   - name: GRE tunnel configuration on R1
+     ios_config:
+      lines:
+       - 'description Tunnel for R1 to R2'
+       - 'ip address 10.10.0.6 255.255.255.252'
+       - 'tunnel source gigabitethernet1'
+       - 'tunnel destination {{ R2_public_ip }}'
+      parents: interface tunnel 6
+     when: '"R2" in inventory_hostname'
 
-  tasks:
-   - name: Gather OSPF Interfaces provided configurations
-     cisco.ios.ios_ospf_interfaces:
-      config:
-      state: gathered  
-
-   - name: show OSPF  interface configurations 
-     debug:
-       var: commands.stdout 
+    

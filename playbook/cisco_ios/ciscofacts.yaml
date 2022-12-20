@@ -29,6 +29,6 @@
   #    debug: 
   #      msg: The current config for is:{{ ansible_net_iostype }} 
 
-    - name: Current ios
-      debug: 
-        msg: The current config for is:{{ ansible_net_iostype }} 
+   - name: Current ios
+     debug: 
+       msg: The current config for is:{{ ansible_net_iostype }} 
