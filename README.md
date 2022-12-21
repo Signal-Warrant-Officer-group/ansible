@@ -1,5 +1,9 @@
 Welcome to our Ansible project on the commercial side!
 
+Please read to understand what focus is in this project so we don't lose sight of the end goal. 
+
+https://github.com/Signal-Warrant-Officer-group/Ansible.wiki.git
+
 Our organization is focused on using Ansible to create and test projects in a local environment. By bringing together a diverse group of collaborators, we aim to learn from each other and make the most of our shared passion for automation.
 
 This project on GitHub is dedicated to developing and improving our ansible skills outside of work, while keeping our production network playbooks separate in our Army github.
