@@ -13,5 +13,5 @@
     lines:
     - description test interface
     - ip address 172.31.1.1 255.255.255.0
-    parents: interface gigbitethernet 2
+    parents: interface gigbitethernet 1
   
