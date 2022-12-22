@@ -8,6 +8,9 @@ We believe that by working together and sharing our knowledge and resources, we 
 
 Together, let's build and test innovative projects using ansible. We look forward to collaborating with you!
 
+
+--------------------------------
+
 --- update December 22 2022 ---
 
 I wanted to bring to your attention that due to the new policy, we are no longer able to push code up for testing in an environment. This means that the usual process of using VS Code to test and push playbooks will not be possible.  Otherwise we would need to pay for the team plan which is $4 per user.
