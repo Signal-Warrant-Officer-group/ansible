@@ -1,36 +1,51 @@
 ---
-- name: Cisco show version
-  hosts: routers
+- name: cisco
+  hosts: R1
   gather_facts: false
   connection: network_cli
 
-  vars: 
-   R1: "{{ hostvars['R1']['ansible_host'] }}"
-   R2: "{{ hostvars['R2']['ansible_host'] }}"
+ 
+  tasks:
 
-
-  tasks: 
-  
-  - name: Config R1 GRE
-    ios_config:
-     lines:
-       - 'ip address 10.0.0.1 255.255.255.0'
-       - 'tunnel source GigabitEthernet1'
-       - 'tunnel destination {{ R2 }}'
-       - 'ip OSPF 21 area 0'
-       - 'ip mtu 1386'
-     parents: interface Tunnel 0
-    when: '"R1" in inventory_hostname'
-  
-  - name: Config R2 GRE
-    ios_config:
+   - name: configure interface settings
+     cisco.ios.ios_config:
       lines:
-       - 'ip address 10.0.0.2 255.255.255.0'
-       - 'tunnel source GigabitEthernet1'
-       - 'tunnel destination {{ R1 }}'
-       - 'ip OSPF 21 area 0'
-       - 'ip mtu 1386'
-      parents: interface Tunnel 0
-    when: '"R2" in inventory_hostname'
+      - description loopback0 R1
+      - ip address 172.31.1.1 255.255.255.255
+      - ip ospf 21 area 0
+      parents: interface Loopback0
+      
+      
+
+- name: cisco
+  hosts: R2
+  gather_facts: false
+  connection: network_cli
 
  
+  tasks:
+
+   - name: configure interface settings
+     cisco.ios.ios_config:
+      lines:
+      - description loopback0 R2
+      - ip address 172.31.1.2 255.255.255.255
+      - ip ospf 21 area 0
+      parents: interface Loopback0
+      
+ 
+- name: cisco
+  hosts: R3
+  gather_facts: false
+  connection: network_cli
+
+ 
+  tasks:
+
+   - name: configure interface settings
+     cisco.ios.ios_config:
+      lines:
+      - description loopback0 R3
+      - ip address 172.31.1.3 255.255.255.255
+      - ip ospf 21 area 0
+      parents: interface Loopback0
