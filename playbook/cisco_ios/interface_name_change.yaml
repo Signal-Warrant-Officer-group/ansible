@@ -4,7 +4,9 @@
   gather_facts: false
   connection: network_cli
   vars:
+  #change the physical interface 
     intf_name: GigabitEthernet 1.222
+  # description of the interface 
     intf_description: VLAN 222 MNGT 
   tasks:
   - name: Configure interface
