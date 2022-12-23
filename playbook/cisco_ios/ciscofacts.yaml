@@ -7,27 +7,21 @@
    - name: Gather L3 interfaces resources and minimal legacy facts 
      cisco.ios.ios_facts:
  
-        
-
-  #  - name: display serial number
-  #    debug: 
-  #      msg: The serial number is:{{ ansible_net_serialnum }} 
-
+   - name: display serial number
+     debug: 
+       msg: The serial number is:{{ ansible_net_serialnum }} 
+ 
   #  - name: display cdp neighbors
   #    debug: 
   #      msg: Current neighbors are:{{ ansible_net_neighbors }} 
 
-  #  - name: show device hostname 
-  #    debug: 
-  #      msg: Current interface on device:{{ ansible_net_hostname }} 
+   - name: show device hostname 
+     debug: 
+       msg: Current interface on device:{{ ansible_net_hostname }} 
 
-  #  - name: Current image
-  #    debug: 
-  #      msg: The current config for is:{{ ansible_net_image }} 
-
-  #  - name: Current ios
-  #    debug: 
-  #      msg: The current config for is:{{ ansible_net_iostype }} 
+   - name: Current image
+     debug: 
+       msg: The current config for is:{{ ansible_net_image }} 
 
    - name: Current ios
      debug: 

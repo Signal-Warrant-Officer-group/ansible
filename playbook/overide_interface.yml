@@ -8,13 +8,14 @@
   tasks:
    - name: Merge provided configuration with device configuration
      cisco.ios.ios_l3_interfaces:
-         config:
-         - name: GigabitEthernet3
-           ipv4:
-            - address: 192.168.0.2/24
-         - name: GigabitEthernet2
-           ipv4:
-            - address: 192.168.3.2/24
+      config:
+      - name: GigabitEthernet 3
+        ipv4:
+         - address: 192.168.0.2/24
+         
+      - name: GigabitEthernet 2
+        ipv4:
+        - address: 192.168.3.2/24
             
           
 
