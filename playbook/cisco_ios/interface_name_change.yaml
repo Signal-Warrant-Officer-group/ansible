@@ -1,0 +1,42 @@
+---
+- name: Configure Cisco IOS device
+  hosts: R1
+  gather_facts: false
+  connection: network_cli
+  vars:
+    intf_name: GigabitEthernet 1.222
+    intf_description: VLAN 222 MNGT 
+  tasks:
+  - name: Configure interface
+    ios_config:
+      lines:
+      - "interface {{ intf_name }}"
+      - "description {{ intf_description }}"
+   
+- name: Configure Cisco IOS device
+  hosts: R2
+  gather_facts: false
+  connection: network_cli
+  vars:
+    intf_name: GigabitEthernet 1.222
+    intf_description: VLAN 222 MNGT
+  tasks:
+  - name: Configure interface
+    ios_config:
+      lines:
+      - "interface {{ intf_name }}"
+      - "description {{ intf_description }}"
+
+- name: Configure Cisco IOS device
+  hosts: R3
+  gather_facts: false
+  connection: network_cli
+  vars:
+    intf_name: GigabitEthernet 1.222
+    intf_description: VLAN 222 MNGT
+  tasks:
+  - name: Configure interface
+    ios_config:
+      lines:
+      - "interface {{ intf_name }}"
+      - "description {{ intf_description }}"
