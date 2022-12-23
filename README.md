@@ -8,6 +8,38 @@ We believe that by working together and sharing our knowledge and resources, we 
 
 Together, let's build and test innovative projects using ansible. We look forward to collaborating with you!
 
+--------------------------------
+To install Ansible on an Ubuntu server, follow these steps:
+
+Update the package manager's package list:
+```
+sudo apt-get update
+```
+Install the software-properties-common package, which allows you to use the add-apt-repository command:
+```
+sudo apt-get install software-properties-common
+```
+Add the Ansible package repository to your system's package sources list:
+```
+sudo add-apt-repository ppa:ansible/ansible
+```
+Update the package manager's package list again to include the packages from the new repository:
+```
+sudo apt-get update
+```
+Install Ansible:
+```
+sudo apt-get install ansible
+```
+To verify that Ansible has been installed correctly, you can check the version:
+```
+ansible --version
+```
+This should output the version of Ansible that you have installed.
+
+Note: These instructions are for Ubuntu 20.04. If you are using a different version of Ubuntu, the package names and repository names may be different. You may need to adjust the instructions accordingly.
+
+
 
 --------------------------------
 
