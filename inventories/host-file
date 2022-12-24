@@ -1,15 +1,23 @@
 [routers]
-
-R1 ansible_host=192.168.68.136
-R2 ansible_host=192.168.68.142
-RHN-HUB
+R1 ansible_host=192.168.68.180
+R2 ansible_host=192.168.68.179
+R3 ansible_host=192.168.68.183
 
 [servers]
-Exsi1 ansible_host:192.168.68.132
+Exsi1 ansible_host=192.168.68.132
+
+[firewall]
+
+PAFW ansible_host=192.168.68.187
 
 [routers:vars]
 ansible_network_os=ios
 ansible_user=admin
 ansible_password=GenDyn1234
 ansible_connection=network_cli
+
+[firewall:vars]
+ansible_user = admin
+ansible_host= 192.168.68.187
+ansible_password= GenDyn1234
 

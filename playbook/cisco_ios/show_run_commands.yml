@@ -9,7 +9,7 @@
     - name: run show ip interface brief + ip route
       ios_command:
         commands: 
-          - wr
+          - show ip int br
       register: output
 
     - name: print output

@@ -5,13 +5,13 @@
   connection: network_cli
 
   vars: 
-  #  R1: "{{ hostvars['R1']['ansible_host'] }}"
-  #  R2: "{{ hostvars['R2']['ansible_host'] }}"
+   R1: "{{ hostvars['R1']['ansible_host'] }}"
+   R2: "{{ hostvars['R2']['ansible_host'] }}"
    R3: "{{ hostvars['R3']['ansible_host'] }}"
    # change mtu size 
-   MTU: "{{ 1400 }}"
+   MTU: "{{ 1350 }}"
    # IP ospf cost 
-   cost: "{{ 1000 }}"
+   cost: "{{ 1500 }}"
 
    
 
@@ -49,20 +49,6 @@
       parents: interface Tunnel 58600
     when: '"R2" in inventory_hostname'
 
-      - name: Config R1 GRE
-    ios_config:
-     lines:
-       - 'ip address 10.0.1.1 255.255.255.0'
-       - 'description SIPR over Colorless Tunnel'
-       - 'tunnel source GigabitEthernet1'
-       - 'tunnel destination {{ R2 }}'
-       - 'ip OSPF 21 area 0'
-       - 'ip mtu {{ MTU }}'
-       - 'no ip redirects'
-       - 'no ip proxy-arp'
-       - 'ip ospf cost {{ cost }}'
-     parents: interface Tunnel 58600
-    when: '"R1" in inventory_hostname'
   
   - name: Config R3 Hub
     ios_config:
@@ -78,7 +64,7 @@
        - 'no ip proxy-arp'
        - 'ip ospf cost {{ cost }}'
       parents: interface Tunnel 58600
-    when: '"R2" in inventory_hostname'
+    when: '"R3" in inventory_hostname'
 
 
  

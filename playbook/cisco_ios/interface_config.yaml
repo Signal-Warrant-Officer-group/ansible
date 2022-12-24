@@ -10,18 +10,13 @@
    - name: configure interface settings
      cisco.ios.ios_config:
       lines:
-      - description vlan data 
-      - ip address 192.168.5.254 255.255.255.0
-      - encapsulation dot1q 59
+      - ip address 10.0.5.1 255.255.255.248
+      - encapsulation dot1q 224
       - ip ospf 21 area 0
       - no shut
-      parents: interface GigabitEthernet2.59
-      lines:
-      - no shut
-      parents: interface GigabitEthernet2
+      parents: interface GigabitEthernet2.224
 
-      
-      
+
 
 - name: cisco
   hosts: R2
@@ -34,18 +29,12 @@
    - name: configure interface settings
      cisco.ios.ios_config:
       lines:
-      - description vlan data 
-      - ip address 192.168.6.254 255.255.255.0
-      - encapsulation dot1q 59
+      - ip address 10.0.5.2 255.255.255.248
+      - encapsulation dot1q 224
       - ip ospf 21 area 0
       - no shut
-      parents: interface GigabitEthernet2.59
-      lines:
-      - no shut
-      parents: interface GigabitEthernet2
-      lines: 
-      - router-id 2.2.2.2
-      parents: router ospf 21
+      parents: interface GigabitEthernet2.224
+
 
       
  
@@ -60,15 +49,9 @@
    - name: configure interface settings
      cisco.ios.ios_config:
       lines:
-      - description vlan data 
-      - ip address 192.168.7.254 255.255.255.0
-      - encapsulation dot1q 59
+      - ip address 10.0.5.3 255.255.255.248
+      - encapsulation dot1q 224
       - ip ospf 21 area 0
       - no shut
-      parents: interface GigabitEthernet2.59
-      lines:
-      - no shut
-      parents: interface GigabitEthernet2
-      lines: 
-      - no router ospf 1
-      parents: router ospf 1
+      parents: interface GigabitEthernet2.224
+   
