@@ -9,6 +9,23 @@ We believe that by working together and sharing our knowledge and resources, we 
 Together, let's build and test innovative projects using ansible. We look forward to collaborating with you!
 
 --------------------------------
+This is the layout of the lab based on the configuration I have under the repository.
+
+<img width="427" alt="Screenshot 2022-12-24 at 2 07 53 PM" src="https://user-images.githubusercontent.com/13005984/209451062-7feba0b2-5d5c-413f-ac84-6a2e6c458372.png">
+
+Running the follow systems 
+
+1 Dell server with ESX-I 6.5 
+
+3 CSRV-1000
+
+1 Ansible server (ubunutu LTS 20.04)
+
+1 Windows server 2012 (Radius)
+
+1 Palo Alto Firewall VM
+
+--------------------------------
 To install Ansible on an Ubuntu server, follow these steps:
 
 Update the package manager's package list:
