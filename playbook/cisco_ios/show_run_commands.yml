@@ -10,6 +10,8 @@
       ios_command:
         commands: 
           - show ip int br
+          - show ip ospf neig
+          - show run | s ip route 
       register: output
 
     - name: print output

@@ -10,14 +10,6 @@
 
 # Ex 1: Ungrouped hosts, specify before any group headers.
 
-[routers]
-
-R1 192.168.68.180
-R2 192.168.68.179
-R3 192.168.68.183
-
-
-
 ## green.example.com
 ## blue.example.com
 ## 192.168.100.1

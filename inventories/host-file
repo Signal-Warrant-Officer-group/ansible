@@ -10,10 +10,21 @@ Exsi1 ansible_host=192.168.68.132
 
 PAFW ansible_host=192.168.68.187
 
+[win]
+
+win ansible_host=192.168.68.188
+
+[win:vars]
+
+ansible_user=ansible 
+ansible_password=GenDyn1234567*(
+ansible_host=192.168.68.188
+
+
 [routers:vars]
 ansible_network_os=ios
-ansible_user=admin
-ansible_password=GenDyn1234
+ansible_user=tim.c
+nsible_password=GenDyn1234
 ansible_connection=network_cli
 
 [firewall:vars]

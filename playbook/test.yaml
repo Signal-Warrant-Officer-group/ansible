@@ -1,20 +1,23 @@
---- 
--
- hosts: firewall
- connection: local
- gather_facts: false
- 
- vars:
-  provider:
-   ip_address: 192.168.68.187
-   username: admin
-   passworkd: GenDyn1234
-
- collections:
-  - paloaltonetwork.panos
+---
+- name: Create Active Directory users
+  hosts: radius
+  gather_facts: false
+  ansible_connection: winrm
+  ansible_winrm_server_cert_validation: ignore
+  ansible_winrm_transport: basic
+  ansible_winrm_port: 5985
   
- tasks:
-  - name: check if ready
-    panos_check:
-     ip_address: 192.168.68.187
-     password: GenDyn1234
+  tasks:
+  - name: read user_csv
+    read_csv:
+     path: /etc/ansible/inventories/username.csv
+    register: user_csv
+  - name: Create Active Directory user
+    win_domain_user:
+     name: "{{ item.first_name }}.{{ item.last_name }}"
+     password: "{{ item.password }}"
+     password_expired: yes
+     password_never_expires: no
+     password_change_required: no
+     password_expiry_date: "{{ item.pcs_ets_month, pcs_ets_day, pcs_ets_year }}"
+     loop: "{{ user_csv.users }}"
