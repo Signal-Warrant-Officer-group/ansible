@@ -2,6 +2,7 @@
 - name: Cisco show version
   hosts: routers
   gather_facts: false
+  
 
   tasks:
    - name: Gather L3 interfaces resources and minimal legacy facts 

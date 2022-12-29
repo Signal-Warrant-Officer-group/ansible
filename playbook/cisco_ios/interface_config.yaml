@@ -1,57 +1,66 @@
 ---
 - name: cisco
-  hosts: R1
+  hosts: routers
   gather_facts: false
   connection: network_cli
-
- # This playbook creats basic loopbacks or interface configurations in the router. 
+  
+ # This playbook creats RADIUS server authentication 
   tasks:
-
-   - name: configure interface settings
+   - name: Radius Server configuration
      cisco.ios.ios_config:
       lines:
-      - ip address 10.0.5.1 255.255.255.248
-      - encapsulation dot1q 224
-      - ip ospf 21 area 0
-      - no shut
-      parents: interface GigabitEthernet2.224
+      #  - aaa new-model
+       - aaa group server radius radius-server1
+         - service-private 192.168.68.188 key test
+         - ip radius source-interface GigabitEthernet1
+       
+      #  - aaa authentication login default group radius-server1 local
+      #  - aaa authentication login console group radius-server1 local
+      #  - aaa authorization console
+      #  - aaa authorization exec default group radius-server1 local
+      #  - ip host testing.com 192.168.68.188
+      #  - radius-server directed-request
+
+        
+       
+    
 
 
 
-- name: cisco
-  hosts: R2
-  gather_facts: false
-  connection: network_cli
+# - name: cisco
+#   hosts: R2
+#   gather_facts: false
+#   connection: network_cli
 
  
-  tasks:
+#   tasks:
 
-   - name: configure interface settings
-     cisco.ios.ios_config:
-      lines:
-      - ip address 10.0.5.2 255.255.255.248
-      - encapsulation dot1q 224
-      - ip ospf 21 area 0
-      - no shut
-      parents: interface GigabitEthernet2.224
+#    - name: configure interface settings
+#      cisco.ios.ios_config:
+#       lines:
+#       - ip address 10.0.5.2 255.255.255.248
+#       - encapsulation dot1q 224
+#       - ip ospf 21 area 0
+#       - no shut
+#       parents: interface GigabitEthernet2.224
 
 
       
  
-- name: cisco
-  hosts: R3
-  gather_facts: false
-  connection: network_cli
+# - name: cisco
+#   hosts: R3
+#   gather_facts: false
+#   connection: network_cli
 
  
-  tasks:
+#   tasks:
 
-   - name: configure interface settings
-     cisco.ios.ios_config:
-      lines:
-      - ip address 10.0.5.3 255.255.255.248
-      - encapsulation dot1q 224
-      - ip ospf 21 area 0
-      - no shut
-      parents: interface GigabitEthernet2.224
+#    - name: configure interface settings
+#      cisco.ios.ios_config:
+#       lines:
+#       - ip address 10.0.5.3 255.255.255.248
+#       - encapsulation dot1q 224
+#       - ip ospf 21 area 0
+#       - no shut
+#       parents: interface GigabitEthernet2.224
    

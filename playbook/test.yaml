@@ -1,23 +1,42 @@
 ---
-- name: Create Active Directory users
-  hosts: radius
+- name: create users from csv file
+  hosts: localhost
   gather_facts: false
-  ansible_connection: winrm
-  ansible_winrm_server_cert_validation: ignore
-  ansible_winrm_transport: basic
-  ansible_winrm_port: 5985
-  
+  become: false
+  vars_files:
+    - /etc/ansible/inventories/username.csv
+   
   tasks:
-  - name: read user_csv
-    read_csv:
-     path: /etc/ansible/inventories/username.csv
-    register: user_csv
-  - name: Create Active Directory user
-    win_domain_user:
-     name: "{{ item.first_name }}.{{ item.last_name }}"
-     password: "{{ item.password }}"
-     password_expired: yes
-     password_never_expires: no
-     password_change_required: no
-     password_expiry_date: "{{ item.pcs_ets_month, pcs_ets_day, pcs_ets_year }}"
-     loop: "{{ user_csv.users }}"
+  - name: Parse CSV To YAML
+    template:
+      src: /etc/ansible/inventories/username.csv
+      dest: /etc/ansible/inventories/host.yaml
+    run_once: true
+  
+  
+  
+  
+  
+  
+  #  - name: reading the csv file
+  #    read_csv:
+  #     path: /etc/ansible/inventories/username.csv
+  #    register: user_list
+  #    delegate_to: localhost
+
+  #  - name: display user_list data
+  #    debug:
+  #     var: user_list.list
+
+  #  - community.windows.win_domain_user:
+  #     name: "{{ first_name }}"
+  #     description: user account for routers and switches
+  #     password: "{{ user_list.password }}"
+  #     upn: "{{ user_list.first_name user_list.last_name }}" 
+  #     state: present
+  #     update_password: when_changed
+  #     password_never_expires: true
+  #     account_locked: no
+  #     enabled: yes
+   
+     

@@ -1,6 +1,10 @@
 ---
 
 ansible_network_os: ios
-ansible_user: tim.c
+ansible_user: admin
 ansible_password: GenDyn1234
 ansible_connection: network_cli
+ansible_become: true
+ansible_become_method: enable
+ansible_become_pass: GenDyn1234
+

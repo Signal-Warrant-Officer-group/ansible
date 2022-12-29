@@ -1,0 +1,26 @@
+---
+- name: connect to windows server
+  hosts: win
+  gather_facts: false
+
+  
+  vars:
+   ansible_connection: ssh
+   ansible_shell_type: cmd
+   ansible_user: administrator
+   ansible_password: GenDyn1234567*(
+
+
+  tasks:  
+  - community.windows.win_domain_user:
+        name: 
+        description: Radius server account
+        password: "
+        upn: jayson.c@testing.com
+        state: present
+        update_password: when_changed
+        password_never_expires: true
+        account_locked: no
+        enabled: yes
+   
+     
