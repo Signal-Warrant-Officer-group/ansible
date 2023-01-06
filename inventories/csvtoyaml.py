@@ -13,7 +13,7 @@ def csv_to_yaml(csvFile, output):
         keys = next(reader)
         keys.append('account_expiration')
         for row in reader:
-            account_expires = (row[3]+'/'+row[4]+'/'+row[5])
+            account_expires = f"{row[3]}/{row[4]}/{row[5]}"
             dt = datetime.strptime(account_expires, '%m/%d/%Y').date()
             row.append(dt)
             yaml.dump([dict(zip(keys, row))], s, sort_keys=False,default_flow_style=False, allow_unicode=True)
